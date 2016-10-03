@@ -1,0 +1,17 @@
+html {
+  height: 100%;
+}
+
+body{
+	background-image: url("../images/back.jpg");
+	background-size: 50% ;
+ 	background-position: center;
+ 	/*background-repeat: no-repeat;*/
+ 	overflow-x: hidden;
+}
+
+div#dashboard{
+	text-align: center;
+	margin: 100px;
+	text-overflow: hidden;
+}
