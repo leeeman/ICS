@@ -11,6 +11,43 @@
 |
 */
 
-Route::get('/', function () {
+Route::filter('authenticate', function(){
+	// DB::statement('call update_fine()');
+	if ( !Session::has('username') ){
+		
+		return Redirect::to('/');
+	}
+});
+
+Route::get('/', array('as'=>'signin', 'uses'=>'MainController@get_index'));
+
+/*Route::post('/', array('uses'=>'MainController@post_index'));*/
+
+Route::post('Signin', array('uses'=>'MainController@post_index'));
+
+Route::group(['before' => 'authenticate'], function(){
+
+	Route::get('logout', function(){
+		Session::flush();
+		return Redirect::to('/');
+	});
+
+	/*Route::controller('stock', 'StockController');
+	Route::controller('order', 'OrderController');
+	Route::controller('supplier', 'SupplierController');
+	Route::controller('customer', 'CustomerController');
+	Route::controller('accounts', 'AccountsController');*/
+	Route::get('dashboard', function () {
     return view('index');
+});
+
+});//main group
+
+
+/*Route::get('/', function () {
+    return view('login');
+});*/
+Route::get('test',function(){
+
+	return "Welcome to test";
 });

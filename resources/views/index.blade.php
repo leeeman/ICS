@@ -17,6 +17,7 @@
     <script type="text/javascript" src="js/metro.min.js"></script>
 </head>
 <body class="metro">
+<div data-role="preloader" id="overlay" data-type="cycle" data-style="color"></div>
 	<nav class="navigation-bar dark">
 	    <div class="navigation-bar-content">
 	        <a href="/" class="element"><span class="icon-grid-view"></span> METRO UI CSS <sup>2.0</sup></a>
@@ -82,75 +83,11 @@
 	    </div>
 	</nav>
 	<div class="container">
-		<div class="grid fluid">
-	    	<div class="row">
-				<div class="span3 tile bg-orange">
-					<div class="tile-content icon">
-				        <i class="icon-cart-2"></i>
-				    </div>
-				    <div class="tile-status">
-				        <span class="name">Store</span>
-				    </div>
-				</div>
-				<div class="span2 tile bg-lightPink">
-					<div class="tile-content icon">
-				        <i class="icon-user"></i>
-				    </div>
-					<div class="brand bg-black">
-				        <span class="label fg-white">Player</span>
-				    </div>
-				</div>
-				<div class="span4 tile bg-green">
-					<div class="tile-content icon">
-				        <i class="icon-mail"></i>
-				    </div>
-					<div class="brand bg-dark opacity">
-			        <span class="text">
-			            Text Here
-			        </span>
-			    </div>
-				</div>
-				<div class="span3 tile bg-blue">
-					<div class="tile-content icon">
-				        <i class="icon-home"></i>
-				    </div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="span2 tile bg-magenta">
-					<div class="tile-content icon">
-				        <i class="icon-cart-2"></i>
-				    </div>
-				    <div class="tile-status">
-				        <span class="name">Store</span>
-				    </div>
-				</div>
-				<div class="span3 tile bg-lightGreen">
-					<div class="tile-content icon">
-				        <i class="icon-user"></i>
-				    </div>
-					<div class="brand bg-black">
-				        <span class="label fg-white">Player</span>
-				    </div>
-				</div>
-				<div class="span2 tile bg-red">
-					<div class="tile-content icon">
-				        <i class="icon-mail"></i>
-				    </div>
-					<div class="brand bg-dark opacity">
-				        <span class="text">Text Here</span>
-				    </div>
-				</div>
-				<div class="span2 tile bg-darkBlue">
-				</div>
-				<div class="span3 tile bg-yellow">
-					<div class="tile-content icon">
-				        <i class="icon-home"></i>
-				    </div>
-				</div>
-			</div>
+		<div id="dashboard_content">
+		@include('dasboard')
 		</div>
 	</div>
 </body>
+<script type='text/javascript' src="js/application.js"></script>
 </html>
+
