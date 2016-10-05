@@ -13,3 +13,17 @@ body{
 div.row .tile{
 	margin: 0px;
 }
+
+.form-style{
+	padding: 20px 40px 20px 90px;
+    border: 1px #ccc solid;
+    position: relative;
+    margin: 0 0 10px 0;
+    background-color: #fdfdfd !important;
+    min-height: 100px;
+}
+
+#dashboard_content{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
