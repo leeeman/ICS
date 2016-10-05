@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="js/jquery.widget.min.js"></script>
 	<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
     <script type="text/javascript" src="js/metro.min.js"></script>
+    
 </head>
 <body class="metro">
 <div data-role="preloader" id="overlay" data-type="cycle" data-style="color"></div>

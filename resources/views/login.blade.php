@@ -17,12 +17,13 @@
 
    
     <script src="js/metro.js"></script>
+    <script type="text/javascript" src="js/notify.js"></script>
 	
 	
     <style>
         .login-form {
             width: 25rem;
-            height: 18.75rem;
+            height: 20.75rem;
             position: fixed;
             top: 50%;
             margin-top: -9.375rem;
@@ -41,18 +42,23 @@
             <h1 class="text-light">Login to ICS</h1>
             <hr class="thin">
             <br>
-            <div class="input-control text full-size" data-role="input">
-                <label for="user_login">User email:</label>
-                <input type="text" name="user_login" id="user_login" style="padding-right: 39px;">
-                <button class="button helper-button clear" tabindex="-1" type="button"><span class="mif-cross"></span></button>
-            </div>
+            <div class="input-control modern text iconic">
+				    <input type="text" name="user_login" id="user_login">
+				    <span class="label">You login</span>
+				    <span class="informer">Please enter your username</span>
+				    <span class="placeholder">Input login</span>
+				    <span class="icon mif-user"></span>
+			</div>
             <br>
             <br>
-            <div class="input-control password full-size" data-role="input">
-                <label for="user_password">User password:</label>
-                <input type="password" name="user_password" id="user_password" style="padding-right: 39px;">
-                <button class="button helper-button reveal" tabindex="-1" type="button"><span class="mif-looks"></span></button>
-            </div>
+            <div class="input-control modern password iconic" data-role="input">
+				    <input type="password" name="user_password" id="user_password">
+				    <span class="label">You password</span>
+				    <span class="informer">Please enter your password</span>
+				    <span class="placeholder">Input password</span>
+				    <span class="icon mif-lock"></span>
+				    <button class="button helper-button reveal"><span class="mif-looks"></span></button>
+			</div>
             <br>
             <br>
             <div class="form-actions">

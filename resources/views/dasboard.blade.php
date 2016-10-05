@@ -1,6 +1,6 @@
 <div class="grid fluid">
 	    	<div class="row">
-				<div class="span3 tile bg-orange nav" data-link="test">
+				<div class="span3 tile bg-orange nav" data-link="stock/new-stock">
 					<div class="tile-content icon">
 				        <i class="icon-cart-2"></i>
 				    </div>

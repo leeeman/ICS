@@ -32,7 +32,8 @@ Route::group(['before' => 'authenticate'], function(){
 		return Redirect::to('/');
 	});
 
-	/*Route::controller('stock', 'StockController');
+	Route::controller('stock', 'StockController');
+	/*
 	Route::controller('order', 'OrderController');
 	Route::controller('supplier', 'SupplierController');
 	Route::controller('customer', 'CustomerController');

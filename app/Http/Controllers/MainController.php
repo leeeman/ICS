@@ -56,8 +56,7 @@ class MainController extends Controller {
 	}
 
 	public function Dashboard(){
-		return View::make('Dashboard')
-			->with('title', 'JST Pharma');
+		return View::make('dasboard');
 	}
 
 	public static function print_general($html, $page_orientation = 'P'){
