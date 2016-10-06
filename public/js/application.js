@@ -3,8 +3,8 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 	Employees = [], Admin = [], Accounts = [], reqOptions = {};
 	var typingTimer;                //timer identifier
 	var doneTypingInterval = 1500;  //time in ms, 2.5 second for example
-	/*PNotify.prototype.options.styling = "bootstrap3";
-	PNotify.stack_bottomright = {"dir1": "up", "dir2": "left", "firstpos1": 0, "firstpos2": 25};*/
+	PNotify.prototype.options.styling = "bootstrap3";
+	PNotify.stack_bottomright = {"dir1": "up", "dir2": "left", "firstpos1": 0, "firstpos2": 25};
 	/*google.charts.load('current', {'packages':['corechart']});*/
 
 	Utils.toMillions = function(number){
@@ -252,13 +252,64 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
    Utils.get = function(url, success, input, error){
    	Utils.post(url, success, input, error, {type: 'get'});
    }
+Stock.showDetails = function(id){
+		Utils.startWait();
+		$("#dashboard_content").load('stock/new-stock?id='+id, function(){
+			Utils.stopWait();
+		});
+	}	
 
+	Stock.save = function(){
+		Utils.post('stock/save-stock', 
+			function(data){
+				if(data.success){
+					Utils.msgSuccess('New Stock added Successfully!');
+					$("#dashboard_content").load('stock/manage-stock');
+				} else{
+					Utils.smartError('stockForm', data.error);
+				}
+			}, 
+			$('#stockForm').serialize()
+		);
+	}
+
+	Stock.confirmDelete = function(id){
+		$('#super-modal-title').html('Confirm Delete');
+		$('#super-modal-body').html('<p>Are you sure to delete selected stock?</p>');
+		str = '<button type="button" class="btn btn-danger" data-dismiss="modal" onClick="Stock.delete('+id+')">Yes</button>';
+		str += '<button type="button" class="btn btn-default" data-dismiss="modal">No</button>';
+		$('#super-modal-footer').html(str);
+		$('#super-modal').modal('show');
+	}
+
+	Stock.delete = function(id){
+		Utils.post('stock/delete-stock', 
+			function(data){
+				if(data.success){
+					Utils.msgSuccess(data.msg);
+					$("#dashboard_content").load('stock/manage-stock');
+				} else{
+					Utils.msgError(data.error);
+				}
+			}, 
+			{ id : id}
+		);
+	}
+
+	Stock.preparedatatable= function (){
+
+		$('#data_table').dataTable();
+	}
 
 $(function(){
 	$(document).on('click',".nav",function(){
 	link = $(this).attr("data-link");
       $("#dashboard_content").load(link, function(){
       // Utils.stopWait();
+
+       switch(link){
+            case "stock/manage-stock": Stock.preparedatatable(); break;
+        }
         });
       });
 })

@@ -50,10 +50,10 @@ class StockController extends Controller {
 			'generic' 	=> 'required|string',
 			'code' 		=> 'required|string',
 			'brand'		=> 'required|string',
-			'strength' 	=> 'required|numeric',
+			
 			'alarm_at'	=> 'required|integer',
-			'dosage_form' => 'required|string',
-			'strength_unit' => 'required|string'
+			'lead_time' => 'required|integer'
+			
 		]);
 
 		if(!$v->passes()) {
@@ -93,7 +93,7 @@ class StockController extends Controller {
 			return Response::json(array('success'=>false, 'error' => "Cant't Delete"));		
 	}
 
-	public function getTest(){
+	/*public function getTest(){
 		DB::statement('CREATE TEMPORARY TABLE event_ids(ticket_id VARCHAR(30), external_event_id INT(11) )');
 		DB::table('event_ids')
 			->insert(
@@ -101,7 +101,7 @@ class StockController extends Controller {
 			);
 		$r = DB::table('event_ids')->first();
 		return json_encode($r);
-	}
+	}*/
 
 	
 }

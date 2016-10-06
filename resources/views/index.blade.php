@@ -15,6 +15,8 @@
 	<script type="text/javascript" src="js/jquery.widget.min.js"></script>
 	<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
     <script type="text/javascript" src="js/metro.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="plugins/datatables/dataTable.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="plugins/PNotify/pnotify.custom.min.css">
     
 </head>
 <body class="metro">
@@ -132,6 +134,9 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript" src="plugins/datatables/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="plugins/PNotify/pnotify.custom.min.js"></script>
 <script type='text/javascript' src="js/application.js"></script>
 </html>
 

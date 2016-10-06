@@ -1,5 +1,5 @@
 @include('partials.stockMenue')
-<form id='LoginForm'>
+<form id='stockForm'>
 <div class="grid form-style">
     <div class="row">
         <div class="span12">
@@ -9,14 +9,14 @@
 
     <div class="row">
         <div class="span6">
-            <label>Compnay Code</label>
+            <label>Product Code</label>
             <div class="input-control text full-size">
                 <input type="text" name="code" placeholder="Code#">
             </div>
         </div>
     
         <div class="span6">
-            <label>Generic</label>
+            <label>Type</label>
             <div class="input-control text full-size">
                 <input type="text" name="generic" placeholder="Generic">
             </div>
@@ -25,7 +25,7 @@
     
     <div class="row">
         <div class="span6">
-                <label>Brand</label>
+                <label>Product Name</label>
                 <div class="input-control text full-size">
                     <input type="text" name="brand" placeholder="Brand">
                 </div>
@@ -34,7 +34,7 @@
         <div class="span6">
                 <label>Supplier</label>
                 <div class="input-control text full-size">
-                    <input type="text" name="supplier" placeholder="Supplier Name">
+                    <input type="text" name="supplier_id" placeholder="Supplier Name">
                 </div>
      	</div>
     </div>
@@ -74,7 +74,8 @@
     </div>
     
     <div class="form-actions">
-        <button type="button" class="button primary" onclick="" id="btnLogin">Save</button>
+    <button type="button" class="button primary" data-link="stock/manage-stock" onClick='Utils.loadPage($(this))'>Cancel</button>&nbsp;
+        <button type="button" class="button primary" onclick="Stock.save()" id="btnLogin">Save</button>
     </div>
 </div>
 </form>
