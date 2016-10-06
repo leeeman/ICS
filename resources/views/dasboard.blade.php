@@ -8,7 +8,7 @@
 		        <span class="label fg-white">Stock</span>
 		    </div>
 		</div>
-		<div class="span3 tile bg-lightPink nav" data-link="supplier/manage-supplier">
+		<div class="span3 tile bg-yellow nav" data-link="supplier/manage-supplier">
 			<div class="tile-content icon">
 		        <i class="icon-user-2"></i>
 		    </div>

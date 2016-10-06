@@ -1,3 +1,4 @@
+@include('partials.stockMenue')
 <form id='LoginForm'>
 <div class="grid form-style">
     <div class="row">
