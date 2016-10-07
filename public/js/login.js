@@ -8,7 +8,7 @@ Login.submit = function() {
 			data: $('form#LoginForm').serialize(),
 			success: function(data) {
 				if(data.success == false){
-					Utils.stopWait();
+					//Utils.stopWait();
 					
 					$.Notify({
 						    caption: 'Error',

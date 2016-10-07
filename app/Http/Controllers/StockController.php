@@ -36,13 +36,7 @@ class StockController extends Controller {
 			->where('id', $id)
 			->first();
 		
-		if(count($data) > 0){
-			$df = $data->dosage_form;
-			$su = $data->strength_unit;
-		} else{
-			$df = null;
-			$su = null;
-		}
+		
 		$suppliers = DB::table('suppliers')
 		->get();
 		return View::make('add_stock')->with('data', $data)->with('supplier',$suppliers);	
@@ -80,6 +74,65 @@ class StockController extends Controller {
 			;
 		}
 		return Response::json(array('success'=>true, 'error' => 'no error', 'msg'=>'Changes saved'));
+	}
+
+	public function getEditStock(Request $req){
+
+		$v = Validator::make( $req->all(), [
+			'id' => 'required|integer'
+		]);
+		if(!$v->passes()) {
+			$msg = $v->messages()->toJson();
+			return Response::json(array('success'=>false, 'error' => array($msg)));
+		}
+		if(Input::has('id')){
+			$id = Input::get('id');
+		}
+			$data = DB::table('stock')
+			->where('id', $id)
+			->first();
+
+			$suppliers = DB::table('suppliers')
+		    ->get();
+
+			return View::make('edit_stock')->with('data', $data)->with('supplier',$suppliers);	
+		
+
+		
+	}
+
+	public function postEditStock(Request $req){
+		$data = $req->all();
+		$id=Input::get('p_id');
+		unset($data['_token']);
+
+		$v = Validator::make( $data, [
+			'generic' 	=> 'required|string',
+			'code' 		=> 'required|string',
+			'brand'		=> 'required|string',
+			
+			'alarm_at'	=> 'required|integer',
+			'lead_time' => 'required|integer',
+
+			
+		]);
+		if(isset($data['reusability']) && $data['reusability']=='on'){
+			$data['reusability']='true';
+		}
+		if(!$v->passes()) {
+			$msg = $v->messages()->toJson();
+			return Response::json(array('success'=>false, 'error' => array($msg)));
+		}
+
+		if( $id > 0){
+			unset($data['p_id']);
+			$data['id']=$id;
+			$update = DB::table('stock')
+				->where('id', $req->input('p_id'))
+				->update($data);
+				return Response::json(array('success'=>true, 'error' => 'no error', 'msg'=>'Changes saved'));
+		} 
+		
 	}
 
 	public function postDeleteStock(Request $req){

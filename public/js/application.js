@@ -264,7 +264,7 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
    }
 	Stock.showDetails = function(id){
 		Utils.startWait();
-		$("#dashboard_content").load('stock/new-stock?id='+id, function(){
+		$("#dashboard_content").load('stock/edit-stock?id='+id, function(){
 			Utils.stopWait();
 		});
 	}	
@@ -288,19 +288,45 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 		}
 	}
 
+	Stock.edit = function(){
+		var check_suplier=$("[name='supplier_id']").val();
+		if(check_suplier!=0){
+			Utils.post('stock/edit-stock', 
+				function(data){
+					if(data.success){
+						Utils.msgSuccess('Stock updated Successfully!');
+						$("#dashboard_content").load('stock/manage-stock');
+					} else{
+						Utils.smartError('stockForm', data.error);
+					}
+				}, 
+				$('#stockForm').serialize()
+			);
+		}else{
+			Utils.msgError("Please select the Supplier");
+		}
+	}
+
 	Stock.confirmDelete = function(id){
-		$('#super-modal-title').html('Confirm Delete');
-		$('#super-modal-body').html('<p>Are you sure to delete selected stock?</p>');
-		str = '<button type="button" class="btn btn-danger" data-dismiss="modal" onClick="Stock.delete('+id+')">Yes</button>';
-		str += '<button type="button" class="btn btn-default" data-dismiss="modal">No</button>';
-		$('#super-modal-footer').html(str);
-		$('#super-modal').modal('show');
+		str = '<button type="button" class="button danger" data-dismiss="modal" onClick="Stock.delete('+id+')">Yes</button>';
+		str += '<button type="button" class="button default" onclick="$.Dialog.close()">No</button>';
+		var content_h='<div class="modal-content">\
+				<div class="modal-header">\
+					<h4 id="super-modal-title">Confirm Delete</h4>\
+				</div>\
+<div class="modal-body" id="super-modal-body">\
+				<p>Are you sure to delete selected stock?</p></div>\
+				<div class="modal-footer" id="super-modal-footer">'+str+'</div></div>'
+
+		Utils.showDialog('Stock Delete',content_h);
+		
 	}
 
 	Stock.delete = function(id){
 		Utils.post('stock/delete-stock', 
 			function(data){
 				if(data.success){
+					$.Dialog.close();
 					Utils.msgSuccess(data.msg);
 					$("#dashboard_content").load('stock/manage-stock');
 				} else{
