@@ -12,7 +12,11 @@
 class StockController extends Controller {
 	
 	public function getManageStock(){
-		return View::make('StockMain');
+		 $stock = DB::table('stock')
+                            ->where('status', 'ACTIVE')
+                            ->get();
+		return View::make('StockMain',compact('stock'));
+
 	}
 
 	public function getAll(){
@@ -39,7 +43,9 @@ class StockController extends Controller {
 			$df = null;
 			$su = null;
 		}
-		return View::make('add_stock')->with('data', $data)->with('df', $df)->with('su', $su);	
+		$suppliers = DB::table('suppliers')
+		->get();
+		return View::make('add_stock')->with('data', $data)->with('supplier',$suppliers);	
 	}
 
 	public function postSaveStock(Request $req){
@@ -55,7 +61,9 @@ class StockController extends Controller {
 			'lead_time' => 'required|integer'
 			
 		]);
-
+		if(isset($data['reusability']) && $data['reusability']=='on'){
+			$data['reusability']=true;
+		}
 		if(!$v->passes()) {
 			$msg = $v->messages()->toJson();
 			return Response::json(array('success'=>false, 'error' => array($msg)));

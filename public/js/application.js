@@ -270,17 +270,22 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 	}	
 
 	Stock.save = function(){
-		Utils.post('stock/save-stock', 
-			function(data){
-				if(data.success){
-					Utils.msgSuccess('New Stock added Successfully!');
-					$("#dashboard_content").load('stock/manage-stock');
-				} else{
-					Utils.smartError('stockForm', data.error);
-				}
-			}, 
-			$('#stockForm').serialize()
-		);
+		var check_suplier=$("[name='supplier_id']").val();
+		if(check_suplier!=0){
+			Utils.post('stock/save-stock', 
+				function(data){
+					if(data.success){
+						Utils.msgSuccess('New Stock added Successfully!');
+						$("#dashboard_content").load('stock/manage-stock');
+					} else{
+						Utils.smartError('stockForm', data.error);
+					}
+				}, 
+				$('#stockForm').serialize()
+			);
+		}else{
+			Utils.msgError("Please select the Supplier");
+		}
 	}
 
 	Stock.confirmDelete = function(id){
@@ -311,6 +316,54 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 		$('#data_table').dataTable();
 	}
 
+
+		Supplier.prepareMain = function(){
+	   	Utils.stopWait();
+	   	$('button[action=account_detail]').bind('click', function(){
+	   		id = $(this).attr('data-id');
+	   		Utils.startWait();
+	   		$('#dashboard_content').load('supplier/account-detail?id='+id, function(){
+	   			Utils.stopWait();
+	   		});
+	   	});
+
+	   	$('button[action=edit]').bind('click', function(){
+	   		id = $(this).attr('data-id');
+	   		Utils.startWait();
+	   		$('#dashboard_content').load('supplier/new-supplier?id='+id, function(){
+	   			Utils.stopWait();
+	   		});
+	   	});
+   	}
+
+   	Supplier.save = function(){
+		Utils.post('supplier/save-supplier', 
+			function(data){
+				if(data.success){
+					Utils.msgSuccess('New Supplier added Successfully!');
+					$("#dashboard_content").load('supplier/suppliers-main');
+				} else{
+					Utils.smartError('supplierForm', data.error);
+				}
+			}, 
+			$('#supplierForm').serialize()
+		);
+	}
+
+	Supplier.showDetails = function(id){
+		Utils.startWait();
+		$("#dashboard_content").load('supplier/new-supplier?id='+id, function(){
+			Utils.stopWait();
+		});
+	}
+
+	Supplier.showAccountDetails = function(id){
+		Utils.startWait();
+		$("#dashboard_content").load('supplier/account-detail?id='+id, function(){
+			Utils.stopWait();
+		});
+	}
+
 $(function(){
 	$(document).on('click',".nav",function(){
 	link = $(this).attr("data-link");
@@ -319,6 +372,7 @@ $(function(){
 
        switch(link){
             case "stock/manage-stock": Stock.preparedatatable(); break;
+            case "supplier/suppliers-main": Stock.preparedatatable(); break;
         }
         });
       });

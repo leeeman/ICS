@@ -32,10 +32,18 @@
         </div>
     
         <div class="span6">
-                <label>Supplier</label>
-                <div class="input-control text full-size">
-                    <input type="text" name="supplier_id" placeholder="Supplier Name">
+                
+                <div class="input-control select">
+                   <label>Supplier</label>
+                    <select name="supplier_id">
+                        <option value="0">Select Supplier</option>
+                         @foreach($supplier as $supt)
+                            <option value="{{$supt->id}}">{{$supt->name}}</option>
+                          @endforeach     
+                    </select>
+                
                 </div>
+
      	</div>
     </div>
     
@@ -67,7 +75,7 @@
             <div class="input-control switch" data-role="input-control">
                 <label class="inline-block" style="margin-right: 20px">
                     Reusability
-                    <input type="checkbox" name="reusability" id="reusability" checked="">
+                    <input type="checkbox" name="reusability" id="reusability" >
                     <span class="check"></span>
                 </label>
             </div>

@@ -27,7 +27,7 @@
         <div class="span6">
                 <label>Contact Info1</label>
                 <div class="input-control text full-size">
-                    <input type="text" name="contact_2" placeholder="Cell Number 1">
+                    <input type="text" name="contact_1" placeholder="Cell Number 1">
                 </div>
         </div>
     
@@ -63,8 +63,8 @@
     </div>
     
     <div class="form-actions">
-    <button type="button" class="button primary" data-link="stock/manage-stock" onClick='Utils.loadPage($(this))'>Cancel</button>&nbsp;
-        <button type="button" class="button primary" onclick="Supplier.save()" id="supplierFormbtn">Save</button>
+    <button type="button" class="button primary" data-link="supplier/suppliers-main" onClick='Utils.loadPage($(this))'>Cancel</button>&nbsp;
+        <button type="button" class="button defaul" onclick="Supplier.save()" id="supplierFormbtn">Save</button>
     </div>
 </div>
 </form>
