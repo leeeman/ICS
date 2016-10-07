@@ -3,7 +3,7 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 	Employees = [], Admin = [], Accounts = [], reqOptions = {};
 	var typingTimer;                //timer identifier
 	var doneTypingInterval = 1500;  //time in ms, 2.5 second for example
-	PNotify.prototype.options.styling = "bootstrap3";
+	PNotify.prototype.options.styling = "brighttheme";
 	PNotify.stack_bottomright = {"dir1": "up", "dir2": "left", "firstpos1": 0, "firstpos2": 25};
 	/*google.charts.load('current', {'packages':['corechart']});*/
 
@@ -78,17 +78,16 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
       });
 	}
 
-
 	Utils.msgSuccess = function(msg){
 		// $.notify(msg, "success");
-		/*$(function(){
+		$(function(){
         	new PNotify({
             title: 'Success',
             text: msg,
             type: 'success',
             hide: true,
             delay: 2000,
-            icon: true,
+            icon: false,
             buttons:{
                sticker: false,
                sticker_hover: false
@@ -96,25 +95,25 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
             animate_speed: "slow",
             animate:{
                animate: true,
-               in_class: "slideInDown",
-               out_class: "fadeOut",
+               in_class: "rotateInDownLeft",
+               out_class: "rotateOutUpRight",
             },
             addclass: "stack-bottomright",
             stack: PNotify.stack_bottomright
         	});
-    	});*/
+    	});
 	}
 
 	Utils.msgWarning = function(msg){
 		// $.notify(msg, "success");
-		/*$(function(){
+		$(function(){
         	new PNotify({
             title: 'Warning',
             text: msg,
             type: 'warning',
             hide: true,
             delay: 2000,
-            icon: true,
+            icon: false,
             buttons:{
                sticker: false,
                sticker_hover: false
@@ -122,18 +121,18 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
             animate_speed: "slow",
             animate:{
                animate: true,
-               in_class: "slideInDown",
-               out_class: "fadeOut",
+               in_class: "rotateInDownLeft",
+               out_class: "rotateOutUpRight",
             },
             addclass: "stack-bottomright",
             stack: PNotify.stack_bottomright
         	});
-    	});*/
+    	});
 	}
 
 	Utils.msgError = function(msg){
 		// $.notify(msg, "error");
-		/*$(function(){
+		$(function(){
         	new PNotify({
             title: 'Error',
             text: msg,
@@ -148,13 +147,13 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
             animate_speed: "slow",
             animate:{
                animate: true,
-               in_class: "slideInDown",
-               out_class: "fadeOut",
+               in_class: "rotateInDownLeft",
+               out_class: "rotateOutUpRight",
             },
             addclass: "stack-bottomright",
             stack: PNotify.stack_bottomright
         	});
-    	});*/
+    	});
 	}
 
 	Utils.smartError = function (form_name, errors){
@@ -193,17 +192,6 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 		// $("#"+error_div).show();
 		Utils.msgError(elist);
 	}
-
-	//on keyup, start the countdown
-	Utils.setTimer = function(){
-	   if (typingTimer) clearTimeout(typingTimer); // Clear if already set
-	   typingTimer = setTimeout(Employees.FindEmploy, doneTypingInterval);
-	};
-
-	//on keydown, clear the countdown 
-	Utils.clearTimer = function(){
-	   clearTimeout(typingTimer);
-	};
 	
 	Utils.post = function(url, success, input, error, extras){
 		reqOptions = {};
@@ -252,7 +240,7 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
    Utils.get = function(url, success, input, error){
    	Utils.post(url, success, input, error, {type: 'get'});
    }
-Stock.showDetails = function(id){
+	Stock.showDetails = function(id){
 		Utils.startWait();
 		$("#dashboard_content").load('stock/new-stock?id='+id, function(){
 			Utils.stopWait();

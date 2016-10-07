@@ -1,5 +1,5 @@
+Login = [];
 Login.submit = function() {
-		Utils.startWait();
 		$.ajax({ 
 			type: 'post',
 			cache: false,
@@ -25,7 +25,6 @@ Login.submit = function() {
 				}
 			}, //success: function
 			error: function(xhr, textStatus, thrownError) {
-				Utils.stopWait();
 				$.Notify({
 						    caption: 'Error',
 						    content: 'Some thing wents wrong contact system admin',

@@ -6,18 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>Inventory Control System</title>
 	<!-- <link rel="stylesheet" href="css/metro.min.css"> -->
+
 	<link rel="stylesheet" type="text/css" href="css/metro-bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/metro-bootstrap-responsive.css">
 	<link rel="stylesheet" type="text/css" href="css/iconFont.min.css">
 	<link rel="stylesheet" type="text/css" href="css/application.css">
+	<!-- Animate -->
+	<link rel="stylesheet" type="text/css" href="plugins/animate/animate.css">
 	
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery.widget.min.js"></script>
 	<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
     <script type="text/javascript" src="js/metro.min.js"></script>
     <link rel="stylesheet" type="text/css" href="plugins/datatables/dataTable.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="plugins/PNotify/pnotify.brighttheme.css">
     <link rel="stylesheet" type="text/css" href="plugins/PNotify/pnotify.custom.min.css">
-    
 </head>
 <body class="metro">
 	<div id="overlay">

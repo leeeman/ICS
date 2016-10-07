@@ -69,8 +69,6 @@
     </div>
 
  </body> 
-<script type='text/javascript' src="js/application.js"></script>
 <script type='text/javascript' src="js/login.js"></script>
-
 </html>
 
