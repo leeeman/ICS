@@ -96,6 +96,10 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 		Utils.startWait();
 		link = this_.attr("data-link");
       $("#dashboard_content").load(link, function(){
+      	 switch(link){
+            case "stock/manage-stock": Stock.preparedatatable(); break;
+            case "supplier/suppliers-main": Stock.preparedatatable(); break;
+        }
       	Utils.stopWait();
       });
 	}
@@ -378,7 +382,7 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 
 	Supplier.showDetails = function(id){
 		Utils.startWait();
-		$("#dashboard_content").load('supplier/new-supplier?id='+id, function(){
+		$("#dashboard_content").load('supplier/edit-supplier?id='+id, function(){
 			Utils.stopWait();
 		});
 	}

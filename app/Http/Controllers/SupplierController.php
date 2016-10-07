@@ -37,6 +37,27 @@ class SupplierController extends Controller {
 		return View::make('add_supplier')->with('st', $st);
 	}
 
+	public function getEditSupplier(Request $req){
+		
+		$v = Validator::make( $req->all(), [
+			'id' => 'required|integer'
+		]);
+		if(!$v->passes()) {
+			$msg = $v->messages()->toJson();
+			return Response::json(array('success'=>false, 'error' => array($msg)));
+		}
+		if(Input::has('id')){
+			$id = Input::get('id');
+		}
+			$data = DB::table('suppliers')
+			->where('id', $id)
+			->first();
+
+		$st = DB::table('supplier_type')->get();		
+		
+		return View::make('edit_supplier')->with('st', $st)->with('data',$data);
+	}
+
 	public function postSaveSupplier(Request $req){
 		$data = $req->all();
 		unset($data['_token']);

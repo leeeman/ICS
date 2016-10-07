@@ -84,7 +84,7 @@
     
     <div class="form-actions">
     <button type="button" class="button primary" data-link="stock/manage-stock" onClick='Utils.loadPage($(this))'>Cancel</button>&nbsp;
-        <button type="button" class="button primary" onclick="Stock.save()" id="btnLogin">Save</button>
+        <button type="button" class="button default" onclick="Stock.save()" id="btnLogin">Save</button>
     </div>
 </div>
 </form>
