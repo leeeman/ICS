@@ -27,6 +27,28 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 		return r;
 	};
 
+	Utils.showDialog = function(title, content){
+		$.Dialog({
+	        overlay: true,
+	        shadow: true,
+	        flat: false,
+	        icon: '',
+	        title: 'Flat window',
+			draggable: true,
+            sysButtons: {
+                // btnMin: true,
+                // btnMax: true,
+                btnClose: true
+            },
+        	content: '',
+        	padding: 10,
+        	onShow: function(_dialog){
+            $.Dialog.title(title);
+            $.Dialog.content(content);
+            $.Metro.initInputs();
+        }
+    });
+	}
 	Utils.dataTable = function(selector, cols, callback){
 		total = [], pageTotal = [];
 		dt = $(selector).DataTable({

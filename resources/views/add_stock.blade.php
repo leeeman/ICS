@@ -64,12 +64,13 @@
         </div>
     
         <div class="span6">
-                <div class="input-control switch">
-				    <label>Reusablity</label>
-				        <input type="checkbox" name="reusablity" id="reusablity" />
-				        <span class="check"></span>
-				    </label>
-				</div>
+            <div class="input-control switch" data-role="input-control">
+                <label class="inline-block" style="margin-right: 20px">
+                    Reusability
+                    <input type="checkbox" name="reusability" id="reusability" checked="">
+                    <span class="check"></span>
+                </label>
+            </div>
      	</div>
     </div>
     
