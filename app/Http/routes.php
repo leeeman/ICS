@@ -33,9 +33,10 @@ Route::group(['before' => 'authenticate'], function(){
 	});
 
 	Route::controller('stock', 'StockController');
+	Route::controller('supplier', 'SupplierController');
 	/*
 	Route::controller('order', 'OrderController');
-	Route::controller('supplier', 'SupplierController');
+	
 	Route::controller('customer', 'CustomerController');
 	Route::controller('accounts', 'AccountsController');*/
 	Route::get('dashboard', function () {
