@@ -16,7 +16,7 @@
 		        <span class="label fg-white">Suppliers</span>
 		    </div>
 		</div>
-		<div class="span3 tile bg-green nav" data-link="customer/manage-customer">
+		<div class="span3 tile bg-green nav" data-link="customer/customers-main">
 			<div class="tile-content icon">
 		        <i class="icon-user-3"></i>
 		    </div>

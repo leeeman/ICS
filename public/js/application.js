@@ -346,6 +346,7 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 		$('#data_table').dataTable();
 	}
 
+	//////////end of stock................
 
 		Supplier.prepareMain = function(){
 	   	Utils.stopWait();
@@ -394,6 +395,57 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 		});
 	}
 
+	//////end of supplier.......
+
+	Customer.prepareMain = function(){
+	   	Utils.stopWait();
+	   	$('button[action=account_detail]').bind('click', function(){
+	   		id = $(this).attr('data-id');
+	   		Utils.startWait();
+	   		$('#dashboard_content').load('customer/account-detail?id='+id, function(){
+	   			Utils.stopWait();
+	   		});
+	   	});
+
+	   	$('button[action=edit]').bind('click', function(){
+	   		id = $(this).attr('data-id');
+	   		Utils.startWait();
+	   		$('#dashboard_content').load('customer/new-customer?id='+id, function(){
+	   			Utils.stopWait();
+	   		});
+	   	});
+   	}
+
+   	Customer.save = function(){
+		Utils.post('customer/save-customer', 
+			function(data){
+				if(data.success){
+					Utils.msgSuccess('New Customer added Successfully!');
+					$("#dashboard_content").load('customer/customers-main');
+				} else{
+					Utils.smartError('customerForm', data.error);
+				}
+			}, 
+			$('#customerForm').serialize()
+		);
+	}
+
+	Customer.showDetails = function(id){
+		Utils.startWait();
+		$("#dashboard_content").load('customer/edit-customer?id='+id, function(){
+			Utils.stopWait();
+		});
+	}
+
+	Customer.showAccountDetails = function(id){
+		Utils.startWait();
+		$("#dashboard_content").load('customer/account-detail?id='+id, function(){
+			Utils.stopWait();
+		});
+	}
+
+	/////////end of customer..........
+
 $(function(){
 	$(document).on('click',".nav",function(){
 	link = $(this).attr("data-link");
@@ -403,6 +455,7 @@ $(function(){
        switch(link){
             case "stock/manage-stock": Stock.preparedatatable(); break;
             case "supplier/suppliers-main": Stock.preparedatatable(); break;
+            case "customer/customers-main": Stock.preparedatatable(); break;
         }
         });
       });

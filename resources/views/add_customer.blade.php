@@ -1,17 +1,17 @@
-@include('partials.suplierMenue')
-<form id='supplierForm'>
+@include('partials.customerMenue')
+<form id='customerForm'>
 <div class="grid form-style">
     <div class="row">
         <div class="span12">
-            <legend>NEW Supplier</legend>
+            <legend>NEW Customer</legend>
         </div>
     </div>
 
     <div class="row">
         <div class="span6">
-            <label>Supplier Name</label>
+            <label>Customer Name</label>
             <div class="input-control text full-size">
-                <input type="text" name="name" placeholder="Supplier Name">
+                <input type="text" name="name" placeholder="Customer Name">
             </div>
         </div>
     
@@ -42,10 +42,10 @@
     <div class="row">
         <div class="input-control select">
                 <label>Supplier Type</label>
-                <select name="supplier_type">
+                <select name="customer_type">
                     <option value="0">Select Type</option>
-                     @foreach($st as $supt)
-                        <option value="{{$supt->type}}">{{$supt->label}}</option>
+                     @foreach($ct as $c_t)
+                        <option value="{{$c_t->type}}">{{$c_t->label}}</option>
                       @endforeach     
                 </select>
                 
@@ -64,8 +64,8 @@
     </div>
     
     <div class="form-actions">
-    <button type="button" class="button default" onclick="Supplier.save()" id="supplierFormbtn">Save</button>
-    <button type="button" class="button primary" data-link="supplier/suppliers-main" onClick='Utils.loadPage($(this))'>Cancel</button>&nbsp;
+    <button type="button" class="button default" onclick="Customer.save()" id="customerFormbtn">Save</button>
+    <button type="button" class="button primary" data-link="customer/customers-main" onClick='Utils.loadPage($(this))'>Cancel</button>&nbsp;
         
     </div>
 </div>
