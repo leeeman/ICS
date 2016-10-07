@@ -14,7 +14,8 @@ class SupplierController extends Controller {
 	public function getSuppliersMain(){	
 		$data = DB::table('suppliers')
 		->get();
-		return view('suppliersMain')->with('data', $data);		
+		$s_type=DB::table('supplier_type')->get();
+		return view('suplierMain',compact(array('data','s_type')));		
 	}
 
 	public function getAccountDetail(){
@@ -30,23 +31,10 @@ class SupplierController extends Controller {
 	}
 
 	public function getNewSupplier(){
-		if(Input::has('id')){
-			$id = Input::get('id');
-		}
-		else{
-			$id = 0;
-		}
-
-		$data = DB::table('suppliers')
-			->where('id', $id)
-			->first();
 		
-		if(count($data) > 0){
-			$st = $data->supplier_type;
-		} else{
-			$st = null;
-		}
-		return View::make('add_supplier')->with('data', $data)->with('st', $st);
+		$st = DB::table('supplier_type')->get();		
+		
+		return View::make('add_supplier')->with('st', $st);
 	}
 
 	public function postSaveSupplier(Request $req){

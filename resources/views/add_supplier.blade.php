@@ -1,9 +1,9 @@
 @include('partials.suplierMenue')
-<form id='stockForm'>
+<form id='supplierForm'>
 <div class="grid form-style">
     <div class="row">
         <div class="span12">
-            <legend>New Stock</legend>
+            <legend>NEW Supplier</legend>
         </div>
     </div>
 
@@ -18,7 +18,7 @@
         <div class="span6">
             <label>Email</label>
             <div class="input-control text full-size">
-                <input type="text" name="generic" placeholder="Generic">
+                <input type="email" name="email" placeholder="test@gmail.com">
             </div>
      	</div>
     </div>
@@ -27,14 +27,14 @@
         <div class="span6">
                 <label>Contact Info1</label>
                 <div class="input-control text full-size">
-                    <input type="text" name="brand" placeholder="Brand">
+                    <input type="text" name="contact_2" placeholder="Cell Number 1">
                 </div>
         </div>
     
         <div class="span6">
                 <label>Contact Infor2</label>
                 <div class="input-control text full-size">
-                    <input type="text" name="supplier_id" placeholder="Supplier Name">
+                    <input type="text" name="contact_2" placeholder="Cell Num 2">
                 </div>
      	</div>
     </div>
@@ -44,7 +44,9 @@
                 <label>Supplier Type</label>
                 <select name="supplier_type">
                     <option value="0">Select Supplier</option>
-
+                     @foreach($st as $supt)
+                        <option value="{{$supt->id}}">{{$supt->label}}</option>
+                      @endforeach     
                 </select>
                 
         </div>
@@ -54,7 +56,7 @@
 
     <div class="row">
         <div class="input-control textarea">
-          <textarea name="address">...</textarea>
+          <textarea name="address"></textarea>
         </div>
        
        
@@ -62,7 +64,7 @@
     
     <div class="form-actions">
     <button type="button" class="button primary" data-link="stock/manage-stock" onClick='Utils.loadPage($(this))'>Cancel</button>&nbsp;
-        <button type="button" class="button primary" onclick="Stock.save()" id="btnLogin">Save</button>
+        <button type="button" class="button primary" onclick="Supplier.save()" id="supplierFormbtn">Save</button>
     </div>
 </div>
 </form>
