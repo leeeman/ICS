@@ -33,6 +33,7 @@ Route::group(['before' => 'authenticate'], function(){
 	});
 
 	Route::controller('stock', 'StockController');
+	Route::controller('employe', 'EmployeController');
 	Route::controller('supplier', 'SupplierController');
 	Route::controller('customer', 'CustomerController');
 	

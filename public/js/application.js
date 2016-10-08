@@ -1,6 +1,6 @@
 var Utils = [], doc = $(document), win = $(win), body = $("body");
 	var Stock = [], Order = [], SaleOrder = [], Supplier = [], Customer = [], Login = [], 
-	Employees = [], Admin = [], Accounts = [], reqOptions = {};
+	Employe = [], Admin = [], Accounts = [], reqOptions = {};
 	var typingTimer;                //timer identifier
 	var doneTypingInterval = 1500;  //time in ms, 2.5 second for example
 	PNotify.prototype.options.styling = "brighttheme";
@@ -273,6 +273,11 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 		});
 	}	
 
+	Stock.preparedatatable= function (){
+
+		$('#data_table').dataTable();
+	}
+
 	Stock.save = function(){
 		var check_suplier=$("[name='supplier_id']").val();
 		if(check_suplier!=0){
@@ -281,6 +286,7 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 					if(data.success){
 						Utils.msgSuccess('New Stock added Successfully!');
 						$("#dashboard_content").load('stock/manage-stock');
+						Stock.preparedatatable();
 					} else{
 						Utils.smartError('stockForm', data.error);
 					}
@@ -300,6 +306,10 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 					if(data.success){
 						Utils.msgSuccess('Stock updated Successfully!');
 						$("#dashboard_content").load('stock/manage-stock');
+						console.log('Data table is working');
+						 setTimeout(function(){
+ 							 Stock.preparedatatable();
+						}, 1000);
 					} else{
 						Utils.smartError('stockForm', data.error);
 					}
@@ -313,7 +323,7 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 
 	Stock.confirmDelete = function(id){
 		str = '<button type="button" class="button danger" data-dismiss="modal" onClick="Stock.delete('+id+')">Yes</button>';
-		str += '<button type="button" class="button default" onclick="$.Dialog.close()">No</button>';
+		str += '&nbsp;&nbsp;<button type="button" class="button default" onclick="$.Dialog.close()">No</button>';
 		var content_h='<div class="modal-content">\
 				<div class="modal-header">\
 					<h4 id="super-modal-title">Confirm Delete</h4>\
@@ -333,6 +343,7 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 					$.Dialog.close();
 					Utils.msgSuccess(data.msg);
 					$("#dashboard_content").load('stock/manage-stock');
+					Stock.preparedatatable();
 				} else{
 					Utils.msgError(data.error);
 				}
@@ -341,10 +352,7 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 		);
 	}
 
-	Stock.preparedatatable= function (){
-
-		$('#data_table').dataTable();
-	}
+	
 
 	//////////end of stock................
 
@@ -373,6 +381,7 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 				if(data.success){
 					Utils.msgSuccess('New Supplier added Successfully!');
 					$("#dashboard_content").load('supplier/suppliers-main');
+					Stock.preparedatatable();
 				} else{
 					Utils.smartError('supplierForm', data.error);
 				}
@@ -422,6 +431,8 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 				if(data.success){
 					Utils.msgSuccess('New Customer added Successfully!');
 					$("#dashboard_content").load('customer/customers-main');
+					console.log('data table is working');
+					Stock.preparedatatable();
 				} else{
 					Utils.smartError('customerForm', data.error);
 				}
@@ -445,6 +456,44 @@ var Utils = [], doc = $(document), win = $(win), body = $("body");
 	}
 
 	/////////end of customer..........
+
+	Employe.prepareMain = function(){
+	   	Utils.stopWait();
+	   
+	   	$('button[action=edit]').bind('click', function(){
+	   		id = $(this).attr('data-id');
+	   		Utils.startWait();
+	   		$('#dashboard_content').load('employe/new-employe?id='+id, function(){
+	   			Utils.stopWait();
+	   		});
+	   	});
+   	}
+
+   	Employe.save = function(){
+		Utils.post('employe/save-employe', 
+			function(data){
+				if(data.success){
+					Utils.msgSuccess('New Customer added Successfully!');
+					$("#dashboard_content").load('employe/employees-main');
+					console.log('data table is working');
+					Stock.preparedatatable();
+				} else{
+					Utils.smartError('employeForm', data.error);
+				}
+			}, 
+			$('#employeForm').serialize()
+		);
+	}
+
+	Employe.showDetails = function(id){
+		Utils.startWait();
+		$("#dashboard_content").load('employe/edit-employe?id='+id, function(){
+			Utils.stopWait();
+		});
+	}
+
+	
+	/////end of customer............
 
 $(function(){
 	$(document).on('click',".nav",function(){

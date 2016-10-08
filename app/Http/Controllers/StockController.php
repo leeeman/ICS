@@ -116,8 +116,11 @@ class StockController extends Controller {
 
 			
 		]);
-		if(isset($data['reusability']) && $data['reusability']=='on'){
+		if(Input::has('reusability') && $data['reusability']=='on'){
 			$data['reusability']='true';
+		}else{
+
+			$data['reusability']='false';
 		}
 		if(!$v->passes()) {
 			$msg = $v->messages()->toJson();

@@ -46,32 +46,21 @@
 	                <ul class="dropdown-menu dark" data-role="dropdown">
 	                    <li><a href="#" class="nav" data-link="stock/manage-stock">Stock Register</a></li>
 	                    <li><a href="#" class="nav" data-link="stock/new-stock">Add New Stock</a></li>
-	                    <!-- 
-	                    <li>
-	                        <a href="#" class="dropdown-toggle">General CSS</a>
-	                        <ul class="dropdown-menu dark" data-role="dropdown">
-	                            <li><a href="global.html">Global styles</a></li>
-	                            <li><a href="grid.html">Grid system</a></li>
-	                            <div class="divider"></div>
-	                            <li><a href="typography.html">Typography</a></li>
-	                            <li><a href="tables.html">Tables</a></li>
-	                            <li><a href="forms.html">Forms</a></li>
-	                            <li><a href="buttons.html">Buttons</a></li>
-	                            <li><a href="images.html">Images</a></li>
-	                        </ul>
-	                    </li> 
-	                    <li class="divider"></li>
-	                    <li><a href="responsive.html">Responsive</a></li>
-	                    <li class="disabled"><a href="layouts.html">Layouts and templates</a></li>
-	                    <li class="divider"></li>
-	                    <li><a href="icons.html">Icons</a></li>
-	                    -->
+	                    
+	                </ul>
+	            </li>
+	            <li>
+	                <a class="dropdown-toggle" href="#">Employes</a>
+	                <ul class="dropdown-menu dark" data-role="dropdown">
+	                    <li><a href="#" class="nav" data-link="employe/employees-main">Manage Employes</a></li>
+	                    <li><a href="#" class="nav" data-link="employe/new-employe">Add New Employe</a></li>
+	                    
 	                </ul>
 	            </li>
 	            <li>
 	                <a class="dropdown-toggle" href="#">Suppliers</a>
 	                <ul class="dropdown-menu dark" data-role="dropdown">
-	                    <li><a href="#" class="nav" data-link="supplier/manage-supplier">Manage Suppliers</a></li>
+	                    <li><a href="#" class="nav" data-link="supplier/suppliers-main">Manage Suppliers</a></li>
 	                    <li><a href="#" class="nav" data-link="supplier/new-supplier">Add New Supplier</a></li>
 	                </ul>
 	            </li>
@@ -79,7 +68,7 @@
 	            <li>
 	                <a class="dropdown-toggle" href="#">Customer</a>
 	                <ul class="dropdown-menu dark" data-role="dropdown">
-	                    <li><a href="#" class="nav" data-link="customer/manage-customer">Manage Customers</a></li>
+	                    <li><a href="#" class="nav" data-link="customer/customers-main">Manage Customers</a></li>
 	                    <li><a href="#" class="nav" data-link="customer/new-customer">Add New Customer</a></li>
 	                </ul>
 	            </li>
@@ -122,6 +111,7 @@
 	                    <li><a href="#">General Settings</a></li>
 	                    <li><a href="#">User Details</a></li>
 	                    <li><a href="#">Access Control List</a></li>
+	                    <li><a href="logout">Logout</a></li>
 	                </ul>
 	            </div>
 	            <button class="element image-button image-left place-right">
