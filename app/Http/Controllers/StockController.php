@@ -157,15 +157,7 @@ class StockController extends Controller {
 			return Response::json(array('success'=>false, 'error' => "Cant't Delete"));		
 	}
 
-	/*public function getTest(){
-		DB::statement('CREATE TEMPORARY TABLE event_ids(ticket_id VARCHAR(30), external_event_id INT(11) )');
-		DB::table('event_ids')
-			->insert(
-				['ticket_id' => 12, 'external_event_id'=>124]
-			);
-		$r = DB::table('event_ids')->first();
-		return json_encode($r);
-	}*/
+	
 
 	
 }

@@ -109,6 +109,7 @@
 	                </a>
 	                <ul class="dropdown-menu dark place-right" data-role="dropdown">
 	                    <li><a href="#">General Settings</a></li>
+	                    <li><a href="#">Stock Categories</a></li>
 	                    <li><a href="#">User Details</a></li>
 	                    <li><a href="#">Access Control List</a></li>
 	                    <li><a href="logout">Logout</a></li>
